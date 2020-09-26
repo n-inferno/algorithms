@@ -1,5 +1,3 @@
-import random
-
 def gnome_sort(arr):
     """Гномья сортировака по возрастанию"""
     pointer = 1
@@ -12,10 +10,3 @@ def gnome_sort(arr):
         i = pointer
 
     return arr
-
-
-
-
-if __name__ == '__main__':
-    m = [random.randint(0, 1000) for i in range(1000)]
-    print(gnome_sort(m) == sorted(m))

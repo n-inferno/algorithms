@@ -5,7 +5,15 @@ def quick_sort(array):
     if len(array) < 2:
         return array
     pivot = array[0]
-    less = [i for i in array[1:] if i <= pivot]
-    greater = [i for i in array[1:] if i > pivot]
-    return quick_sort(less) + [pivot] + quick_sort(greater)
+    less = []
+    greater = []
+    mid = []
+    for i in range(len(array)):
+        if array[i] < pivot:
+            less.append(array[i])
+        elif array[i] > pivot:
+            greater.append(array[i])
+        else:
+            mid.append(array[i])
+    return quick_sort(less) + mid + quick_sort(greater)
 

@@ -31,7 +31,7 @@ while to_visit:
 print(f'Shortest distances to points from {GO_FROM}:')
 
 for i in weights:
-    print(i + 1, ": ", weights[i], end='\t')
+    print(i + 1, ": ", weights[i], sep='', end='\t')
 
 print(f'\nShortest path from {GO_FROM} to {GO_TO}:')
 

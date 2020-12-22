@@ -24,5 +24,4 @@ def merge_sort(arr):
     if len(arr) == 1:
         return arr
     else:
-        m = len(arr) // 2
-        return merge(merge_sort(arr[:m]), merge_sort(arr[m:]))
+        return merge(merge_sort(arr[:len(arr) // 2]), merge_sort(arr[len(arr) // 2:]))

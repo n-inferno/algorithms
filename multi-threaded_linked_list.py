@@ -40,3 +40,6 @@ class LinkedList:
                     representations[i] += ' -> '
         return '\n'.join(representations)
 
+    def __str__(self, threads=None):
+        return self.__repr__(threads)
+

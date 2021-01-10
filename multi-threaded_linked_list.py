@@ -9,13 +9,17 @@ class Node:
 
 class LinkedList:
     def __init__(self, **threads):
+        self.objects = set()
+        for i in threads.values():
+            self.objects.update(i)
+        self.objects = list(self.objects)
         self.threads = []
         for k, v in threads.items():
             self.threads.append(k)
-            self.__setattr__(k, Node(v.pop(0)))
+            self.__setattr__(k, Node(self.objects[self.objects.index(v.pop(0))]))
             node = self.__getattribute__(k)
             for i in range(len(v)):
-                node.next = Node(v[i])
+                node.next = Node(self.objects[self.objects.index(v[i])])
                 node = node.next
 
     def __repr__(self, threads=None):
@@ -35,8 +39,4 @@ class LinkedList:
                 if node:
                     representations[i] += ' -> '
         return '\n'.join(representations)
-
-if __name__ == '__main__':
-    a = LinkedList(**{'distance': [1,2,3,4,5], 'size': [5,4,3,2,1], 'khaotic': [2,4,3,5,1]})
-    print(a)
 

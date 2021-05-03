@@ -1,18 +1,15 @@
 def choose_sort(array):
     """простая сортировка выбором"""
-    def find_smallest(array):
-        smallest = array[0]
-        smallest_index = 0
-        for i in range(len(array)):
-            if array[i] < smallest:
-                smallest = array[i]
-                smallest_index = i
-        return smallest_index
-    sorted_arrray = []
-    for i in range(len(array)):
-        smallest = find_smallest(array)
-        sorted_arrray.append(array.pop(smallest))
-    return sorted_arrray
-
-
-
+    i = 0
+    while i < len(array):
+        index_min = i
+        min_num = array[i]
+        j = i
+        while j < len(array):
+            if array[j] < min_num:
+                min_num = array[j]
+                index_min = j
+            j += 1
+        array[i], array[index_min] = array[index_min], array[i]
+        i += 1
+    return array

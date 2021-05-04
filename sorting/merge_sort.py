@@ -1,27 +1,21 @@
-def merge(arr1, arr2):
-    """
-    объединение двух отсортированных массивов
-    """
-    merged_arr = []
-    while arr1 and arr2:
-        if not arr2 or arr1[0] <= arr2[0]:
-            merged_arr.append(arr1[0])
-            arr1 = arr1[1:]
-        else:
-            merged_arr.append(arr2[0])
-            arr2 = arr2[1:]
-    if arr1:
-        merged_arr.extend(arr1)
-    if arr2:
-        merged_arr.extend(arr2)
-    return merged_arr
-
-
 def merge_sort(arr):
     """
     сортировка слиянием
     """
-    if len(arr) == 1:
+    def merge(arr1, arr2):
+        merged = []
+        while arr1 or arr2:
+            if not arr2:
+                merged.append(arr1.pop(0))
+            elif not arr1:
+                merged.append(arr2.pop(0))
+            else:
+                merged.append(arr1.pop(0)) if arr1[0] <= arr2[0] else merged.append((arr2.pop(0)))
+        return merged
+
+    if len(arr) <= 1:
         return arr
-    else:
-        return merge(merge_sort(arr[:len(arr) // 2]), merge_sort(arr[len(arr) // 2:]))
+
+    left = arr[:len(arr) // 2]
+    right = arr[len(arr) // 2:]
+    return merge(merge_sort(left), merge_sort(right))
